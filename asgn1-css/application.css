@@ -1,23 +1,30 @@
-.info{
-  background-color: cyan;
-  max-height: 270px;
+/* HTML */
+img {
+  /*max-height: 250px;*/
 }
 
-.btn{
-  display: inline-block;
+body{
+  border-style: solid;
+  border-color: blue;
 }
 
+/* Classes */
 .content{
   display: inline-block;
 }
 
-img{
-  max-height: 250px;
+.info{
+  background-color: cyan;
+  width: 70%;
+
+  /*max-height: 270px;*/
 }
 
-body{
+.picture {
+  width: 20%;
+}
 
-  border-style: solid;
-  border-color: blue;
 
+.btn{
+  display: inline-block;
 }
