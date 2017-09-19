@@ -5,20 +5,8 @@ body{
   border-color: blue;
 }
 
-/** {
-    box-sizing: border-box
-}*/
-
-/*
-<= 600px	Mobile Devices
-> 600px	Tablet Devices
-> 992px	Desktop Devices
-*/
 
 @media screen and (min-width: 640px) {
-
-  /* Classes */
-
 
     .info{
       float: left;
