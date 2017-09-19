@@ -32,11 +32,13 @@ body{
       overflow: scroll;
     }
 
-    .picture {
+    .picture img {
       float: left;
       height: 250px;
       width: 28%;
-      padding:0 1%
+      padding:0 1%;
+      display: block;
+      padding-top: 10px;
     }
 
     .buttons{
@@ -58,7 +60,7 @@ body{
     }
 
     .info{
-      float: left;
+      float: right;
       background-color: cyan;
       height: 270px;
       width: 98%;
