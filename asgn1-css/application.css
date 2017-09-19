@@ -2,11 +2,12 @@
 
 body{
   border-style: solid;
-  /*border-color: blue;*/
+  border-color: blue;
 }
 
-
-
+/** {
+    box-sizing: border-box
+}*/
 
 /*
 <= 600px	Mobile Devices
@@ -14,12 +15,12 @@ body{
 > 992px	Desktop Devices
 */
 
-@media screen and (min-width: 460px) {
+@media screen and (min-width: 640px) {
 
   /* Classes */
 
     body {
-        background-color: lightgreen;
+      background-color: lightgreen;
     }
 
     .info{
@@ -29,8 +30,6 @@ body{
       width: 68%;
       padding:0 1%;
       overflow: scroll;
-
-
     }
 
     .picture {
@@ -48,6 +47,32 @@ body{
     .btn{
       display: inline-block;
       margin: 10px;
+    }
+
+}
+
+@media screen and (max-width: 639px) {
+
+    body {
+      background-color: red;
+    }
+
+    .info{
+      float: left;
+      background-color: cyan;
+      height: 270px;
+      width: 98%;
+      padding: 1% 1%;
+      overflow: scroll;
+    }
+    .btn button{
+      width: 100%;
+    }
+
+    .picture{
+      float: left;
+      width: 98%;
+      padding: 1% 1%;
     }
 
 }
