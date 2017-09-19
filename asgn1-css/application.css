@@ -1,7 +1,4 @@
 /* HTML */
-img {
-  /*max-height: 250px;*/
-}
 
 body{
   border-style: solid;
@@ -10,21 +7,28 @@ body{
 
 /* Classes */
 .content{
-  display: inline-block;
+  /*display: inline-block;*/
+  padding: 10px;
 }
 
 .info{
+  display: inline-block;
   background-color: cyan;
   width: 70%;
-
-  /*max-height: 270px;*/
+  height: 270px;
 }
 
 .picture {
-  width: 20%;
+  display: inline-block;
+  max-height: 250px;
+  width: auto;
+
 }
 
+.buttons{
+  text-align: center;
 
+}
 .btn{
   display: inline-block;
 }
