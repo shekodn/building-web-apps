@@ -1,7 +1,23 @@
 .info{
-  background-color: blue;
+  background-color: cyan;
+  max-height: 270px;
 }
 
 .btn{
-  float: left;
+  display: inline-block;
+}
+
+.content{
+  display: inline-block;
+}
+
+img{
+  max-height: 250px;
+}
+
+body{
+
+  border-style: solid;
+  border-color: blue;
+
 }
