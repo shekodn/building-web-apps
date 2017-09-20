@@ -7,11 +7,16 @@ body{
 
 .info{
   height: 270px;
-
+  background-color: lightblue;
 }
 
 .picture img{
   height: 250px;
+  padding: 10px;
+}
+
+.buttons{
+  padding: 10px;
 }
 
 
@@ -19,19 +24,18 @@ body{
 
     .info{
       float: left;
-      background-color: cyan;
-      width: 68%;
-      padding:0 1%;
       overflow: scroll;
+    }
+
+    .content{
+
+      display: flex;
     }
 
     .picture img {
       float: left;
       height: 250px;
-      width: 28%;
-      padding:0 1%;
       display: block;
-      padding-top: 10px;
     }
 
     .buttons{
@@ -48,30 +52,24 @@ body{
 
 @media screen and (max-width: 639px) {
 
-    body {
-      background-color: red;
-    }
-
     .info{
-      background-color: cyan;
-      height: 270px;
-      width: 98%;
-      padding: 1% 1%;
       overflow: scroll;
       order: 2;
     }
     .btn button{
       width: 100%;
+      margin: 5px;
     }
 
     .content{
       display: flex;
       flex-direction: column;
+      padding-bottom: 10px;
 
     }
     .picture img{
-      width: 98%;
-      padding: 1% 1%;
+      display: block;
+      margin: auto;
     }
 
 }
