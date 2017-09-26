@@ -16,7 +16,20 @@
 		this.items = [];
 	}
 
-	
+
+	//Adds to list function
+	// reference: http://jsfiddle.net/Gmyag/
+
+	var list = document.getElementById('todo-list');
+
+	function addsToList() {
+    var todoItem = document.getElementById('todoItem').value;
+    // document.getElementById('boldStuff2').innerHTML = firstname;
+    var entry = document.createElement('li');
+    entry.appendChild(document.createTextNode(todoItem));
+    list.appendChild(entry);
+}
+
 
 
 })(window);
