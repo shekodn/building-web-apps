@@ -18,18 +18,18 @@
 
 
 	//Adds to list function
-	var foodList = [];
+	// var foodList = [];
 
 	$(function(){
 
-			$('#addFood').keypress(function (e) {
+			$('#addItem').keypress(function (e) {
 				var key = e.which;
 
-				if(key == 13 && $('#addFood').val() != "") {// the enter key code
+				if(key == 13 && $('#addItem').val() != "") {// the enter key code
 					console.log('Adds item');
 					var item = {isCompleted:false, description:"no desc"};
-					item.description = $('#addFood').val();
-					$("#todo-list").append('<li><div class="view"> <input class="toggle" type="checkbox" checked="false"> <label>' + item.description + '</label> <button class="destroy"> </button> </div> </li>');
+					item.description = $('#addItem').val();
+					$("#todo-list").append('<li><div class="view"> <input class="toggle" type="checkbox" > <label>' + item.description + '</label> <button class="destroy"> </button> </div> </li>');
 					$('input[name = butAssignProd]').click();
 					console.log('FALSE');
 
@@ -42,6 +42,14 @@
 	    $(document).on('click','.destroy',function(){
 	        $(this).parent().remove();
 	    });
+
+			$(document).on('click','.toggle',function(){
+				console.log('check');
+
+				$(this).closest('li').toggleClass('completed');
+
+			});
+
 	});
 
 
