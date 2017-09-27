@@ -40,7 +40,7 @@
 				if(key == 13)  {// the enter key code
 
 				console.log('ENTER WAS PRESSED');
-				$('#foods').append('<label class="item" >' + $('#addFood').val() + '</label>');
+				$('#foods').append('<li> <input class="toggle" type="checkbox" checked="false"><label>' + $('#addFood').val() + '</label> </li> <button class="destroy"></button>');
 
 				$('input[name = butAssignProd]').click();
 					return false;
@@ -49,7 +49,6 @@
 				}
 			});
 
-	    // });
 	    $(document).on('click','.item',function(){
 	        $(this).parent().remove();
 	    });
