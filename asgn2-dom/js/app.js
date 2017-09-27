@@ -18,7 +18,6 @@
 
 
 	//Adds to list function
-
 	var foodList = [];
 
 	$(function(){
@@ -26,13 +25,17 @@
 			$('#addFood').keypress(function (e) {
 				var key = e.which;
 
-				if(key == 13) {// the enter key code
+				if(key == 13 && $('#addFood').val() != "") {// the enter key code
 					console.log('Adds item');
-					$("#todo-list").append('<li><div class="view"> <input class="toggle" type="checkbox" checked="false"> <label>' + $('#addFood').val() + '</label> <button class="destroy"> </button> </div> </li>');
+					var item = {isCompleted:false, description:"no desc"};
+					item.description = $('#addFood').val();
+					$("#todo-list").append('<li><div class="view"> <input class="toggle" type="checkbox" checked="false"> <label>' + item.description + '</label> <button class="destroy"> </button> </div> </li>');
 					$('input[name = butAssignProd]').click();
 					console.log('FALSE');
 
 					return false;
+				} else {
+					console.log('Cannot add item');
 				}
 			});
 
