@@ -16,9 +16,16 @@
 		this.items = [];
 	}
 
+	function itemsLeft(){
+		itemsLeft = itemsLeft - 1;
+		$('.todo-count').html(itemsLeft);
+
+	}
+
 
 	//Adds to list function
-	// var foodList = [];
+	var items = [];
+	var itemsLeft = 0;
 
 	$(function(){
 
@@ -26,12 +33,15 @@
 				var key = e.which;
 
 				if(key == 13 && $('#addItem').val() != "") {// the enter key code
+
 					console.log('Adds item');
+					console.log(items);
 					var item = {isCompleted:false, description:"no desc"};
+					items.push(item);
+					$('.todo-count').html(itemsLeft);
 					item.description = $('#addItem').val();
 					$("#todo-list").append('<li><div class="view"> <input class="toggle" type="checkbox" > <label>' + item.description + '</label> <button class="destroy"> </button> </div> </li>');
 					$('input[name = butAssignProd]').click();
-					console.log('FALSE');
 
 					return false;
 				} else {
@@ -47,6 +57,9 @@
 				console.log('check');
 
 				$(this).closest('li').toggleClass('completed');
+				
+				var label = $(this).index();
+				console.log(label);
 
 			});
 
