@@ -18,7 +18,7 @@
 
 
 	//Adds to list function
-		
+
 	var foodList = [];
 
 	$(function(){
@@ -36,7 +36,7 @@
 				}
 			});
 
-	    $(document).on('click','.item',function(){
+	    $(document).on('click','.destroy',function(){
 	        $(this).parent().remove();
 	    });
 	});
