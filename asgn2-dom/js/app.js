@@ -33,13 +33,29 @@
 	var foodList = [];
 
 	$(function(){
-	    $(document).on('click','input[type=submit]',function(){
-	        $('#foods').append('<a href="#" ><label class="item" > X </label></a> ' + $('#addFood').val() );
-	    });
+	    // $(document).on('click','input[type=submit]',function(){
+			$('#addFood').keypress(function (e) {
+				var key = e.which;
+
+				if(key == 13)  {// the enter key code
+
+				console.log('ENTER WAS PRESSED');
+				$('#foods').append('<label class="item" >' + $('#addFood').val() + '</label>');
+
+				$('input[name = butAssignProd]').click();
+					return false;
+					console.log('FALSE');
+
+				}
+			});
+
+	    // });
 	    $(document).on('click','.item',function(){
 	        $(this).parent().remove();
 	    });
 	});
+
+
 
 
 })(window);
