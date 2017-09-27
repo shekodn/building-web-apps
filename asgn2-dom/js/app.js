@@ -54,12 +54,21 @@
 	    });
 
 			$(document).on('click','.toggle',function(){
-				console.log('check');
 
-				$(this).closest('li').toggleClass('completed');
-				
-				var label = $(this).index();
-				console.log(label);
+				if ($(this).closest('li').hasClass('completed')){
+
+					$(this).closest('li').removeClass('completed');
+					var label = $(this).index();
+					items[label].isCompleted = false;
+					console.log('Task #' + label + ' is completed? = ' + items[label].isCompleted);
+
+				} else {
+					$(this).closest('li').addClass('completed');
+					var label = $(this).index();
+					items[label].isCompleted = true;
+					console.log('Task #' + label + ' is completed? = ' + items[label].isCompleted);
+
+				}
 
 			});
 
