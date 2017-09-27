@@ -6,6 +6,7 @@
 		<title>Template • TodoMVC</title>
 		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
 		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<!-- CSS overrides - remove if you don't need it -->
 		<link rel="stylesheet" href="css/app.css">
 	</head>
@@ -13,7 +14,9 @@
 		<section class="todoapp">
 			<header class="header">
 				<h1>todos</h1>
-				<input class="new-todo" placeholder="What needs to be done?" autofocus id="todoItem">
+				<!-- <input class="new-todo" placeholder="What needs to be done?" autofocus id="todoItem"> -->
+				<input class="new-todo" placeholder="What needs to be done?" autofocus  value="food" id="addFood">
+				<!-- <input type="text" /> -->
 			</header>
 			<!-- This section should be hidden by default and shown when there are todos -->
 			<section class="main">
@@ -34,13 +37,15 @@
 						<div class="view">
 							<input class="toggle" type="checkbox">
 							<!-- <label>Buy a unicorn</label> -->
-							<ol id="todo-list"></ol>
+							<div id="foods"></div>
+							<!-- <ol id="todo-list"></ol> -->
 							<button class="destroy"></button>
 						</div>
 						<input class="edit" value="Rule the web">
 					</li>
 				</ul>
-				<input type='button' onclick='addsToList()' value='Submit' />
+				<!-- <input type='button' onclick='addsToList()' value='Submit' /> -->
+				<input type="submit" value="Add more to food" onClick="addToFood();">
 			</section>
 			<!-- This footer should hidden by default and shown when there are todos -->
 			<footer class="footer">

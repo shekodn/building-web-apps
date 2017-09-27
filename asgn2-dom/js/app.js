@@ -22,14 +22,24 @@
 
 	var list = document.getElementById('todo-list');
 
-	function addsToList() {
-    var todoItem = document.getElementById('todoItem').value;
-    // document.getElementById('boldStuff2').innerHTML = firstname;
-    var entry = document.createElement('li');
-    entry.appendChild(document.createTextNode(todoItem));
-    list.appendChild(entry);
-}
+	// function addsToList() {
+  //   var todoItem = document.getElementById('todoItem').value;
+  //   // document.getElementById('boldStuff2').innerHTML = firstname;
+  //   var entry = document.createElement('li');
+  //   entry.appendChild(document.createTextNode(todoItem));
+  //   list.appendChild(entry);
+	// }
 
+	var foodList = [];
+
+	$(function(){
+	    $(document).on('click','input[type=submit]',function(){
+	        $('#foods').append('<a href="#" ><label class="item" > X </label></a> ' + $('#addFood').val() );
+	    });
+	    $(document).on('click','.item',function(){
+	        $(this).parent().remove();
+	    });
+	});
 
 
 })(window);
