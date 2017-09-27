@@ -40,7 +40,7 @@
 				if(key == 13)  {// the enter key code
 
 				console.log('ENTER WAS PRESSED');
-				$('#foods').append('<li> <input class="toggle" type="checkbox" checked="false"><label>' + $('#addFood').val() + '</label> </li> <button class="destroy"></button>');
+				$('#foods').append('<li> <input class="toggle" type="checkbox" checked="false"><label>' + $('#addFood').val() + ' <button class="destroy"></button> </label> </li> ');
 
 				$('input[name = butAssignProd]').click();
 					return false;
