@@ -18,34 +18,21 @@
 
 
 	//Adds to list function
-	// reference: http://jsfiddle.net/Gmyag/
-
-	var list = document.getElementById('todo-list');
-
-	// function addsToList() {
-  //   var todoItem = document.getElementById('todoItem').value;
-  //   // document.getElementById('boldStuff2').innerHTML = firstname;
-  //   var entry = document.createElement('li');
-  //   entry.appendChild(document.createTextNode(todoItem));
-  //   list.appendChild(entry);
-	// }
-
+		
 	var foodList = [];
 
 	$(function(){
-	    // $(document).on('click','input[type=submit]',function(){
+
 			$('#addFood').keypress(function (e) {
 				var key = e.which;
 
-				if(key == 13)  {// the enter key code
-
-				console.log('ENTER WAS PRESSED');
-				$('#foods').append('<li> <input class="toggle" type="checkbox" checked="false"><label>' + $('#addFood').val() + ' <button class="destroy"></button> </label> </li> ');
-
-				$('input[name = butAssignProd]').click();
-					return false;
+				if(key == 13) {// the enter key code
+					console.log('Adds item');
+					$("#todo-list").append('<li><div class="view"> <input class="toggle" type="checkbox" checked="false"> <label>' + $('#addFood').val() + '</label> <button class="destroy"> </button> </div> </li>');
+					$('input[name = butAssignProd]').click();
 					console.log('FALSE');
 
+					return false;
 				}
 			});
 
