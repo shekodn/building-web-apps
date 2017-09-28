@@ -47,7 +47,13 @@
 
 					//adds items
 					iItems += 1;
-					$('.todo-count').html(iItems);
+					if(iItems == 1){
+						$('.todo-count').html(iItems + ' item');
+
+					} else{
+						$('.todo-count').html(iItems + ' items');
+
+					}
 
 					return false;
 
@@ -70,7 +76,13 @@
 
 					//removes items
 					iItems -= 1;
-					$('.todo-count').html(iItems);
+
+					if(iItems == 1){
+						$('.todo-count').html(iItems + ' item');
+
+					} else{
+						$('.todo-count').html(iItems + ' items');
+					}
 
 					console.log('items has ' + items.length + ' elements');
 					console.log(items);
@@ -112,25 +124,8 @@
 			});
 
 			//filters
-			$(document).on('click','.filters',function(){
-
-				// console.log('Filter was clicked');
-				var filterList = document.getElementById("filters").getElementsByTagName("li");
-				var label = $(this).index('.filters');
-
-				// console.log(label);
-
-				// console.log(filterList[label].innerText);
-
-				// if(filterList[$(this).index()] == 0){
-				//
-				// 	console.log(filterList[[$(this).index()].innerText);
-				// }
-
-
-			});
-
 			$("#filters li").click(function() {
+
 				var index = $("#filters li").index(this);
 				// console.log("Index " + index + " was clicked");
 
@@ -145,6 +140,17 @@
 					$('.todo-count').html($("#todo-list .completed").length);
 				}
 
+			});
+
+
+			$( document ).ready(function() {
+				if(iItems == 1){
+					$('.todo-count').html(iItems + ' item');
+
+				} else{
+					$('.todo-count').html(iItems + ' items');
+
+				}
 			});
 
 
