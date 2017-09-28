@@ -101,50 +101,21 @@
 
 	$(document).on('click','.clear-completed',function(){
 
-		var completedItems = $("#todo-list .completed").length;
+		// var completedItems = $("#todo-list .completed").length; //gives you the lenght pf all li elements
+		// var listItems = $("#todo-list li"); //has an array of the li elemtnts
 
 
-		var listItems = $("#todo-list li");
-
-		// $('#todo-list li').each(function() {
-		//
-		// 	var cont = 0;
-		// 	if ($(this).closest('ul').hasClass('completed')){
-		// 		cont +=1;
-		// 		console.log(cont);
-		// 	}
-		// });
-
-
-		listItems.each(function(iN, li) {
+		listItems.each(function(iN, li) { //iterates through the li inside the ul
 
 			// console.log($("#todo-list li")[iN]);
-			var cont = 0;
+
 			if ($(this).closest('li').hasClass('completed')){
-				//
-				cont +=1;
-				console.log(cont);
-				// var label = $(this).index();
-				//
-				// if (label > -1) {
-				// 	console.log('label ' + label);
-				//    items.splice(label, 1);
-				// }
-				//
-				// // $(this).parent().parent().remove();
-				// $(this).parent().remove();
-				// // $(this).closest().remove();
-				//
-				// //removes items
-				// iItems -= 1;
-				// countsItems(iItems);
-				console.log('completed');
+
+				//removes items
+				iItems -= 1;
+				countsItems(iItems);
 				$(this).remove();
 
-
-
-			} else{
-				console.log('not completed');
 			}
 		});
 	});
