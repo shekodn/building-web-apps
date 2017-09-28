@@ -59,6 +59,7 @@
 	var iItems = 0;
 	var itemsCompleted = 0;
 	var itemsNotCompleted = 0;
+	var isEditing = false;
 
 
 	$('#addItem').keypress(function (e) {
@@ -70,14 +71,15 @@
 			var item = {isCompleted:false, description:"no desc"};
 			item.description = $('#addItem').val();
 			items.push(item);
-			$("#todo-list").append('<li><div class="view"> <input class="toggle" type="checkbox" > <label>' + item.description + '</label>  <button class="destroy"> </button> </div>  <input class="edit" value="' + item.description + '"> </li>');
+			$("#todo-list").append('<li><div class="view"> <input class="toggle" type="checkbox" > <label>' + item.description + '</label>  <button class="destroy"> </button> </div>  <input class="edit" id="editing" value="' + item.description + '"> </li>');
 			$('input[name = butAssignProd]').click();
 			console.log('items has ' + items.length + ' elements');
 			console.log(items);
 
 			//adds items
 			iItems += 1;
-			countsItems(iItems);
+			var remainingItems = iItems - $("#todo-list .completed").length;
+			countsItems(remainingItems);
 			hidesFooter();
 			$('#addItem').val('');
 
@@ -136,33 +138,16 @@
 
 		if ($(this).closest('li').hasClass('editing')){
 
-			console.log('has class');
-
 			$(this).closest('li').removeClass('editing');
+			isEditing = false;
+			console.log(isEditing);
 
 		} else{
 
-			console.log('has no class');
 			$(this).closest('li').addClass('editing');
+			isEditing = true;
+			console.log(isEditing);
 
-			///////
-
-			var key = e.which;
-
-			if(key == 13) {// the enter key code
-
-				console.log('Edits item');
-				items[0].description = $('#addItem').val();
-				// $("#todo-list").append('<li><div class="view"> <input class="toggle" type="checkbox" > <label>' + item.description + '</label>  <button class="destroy"> </button> </div>  <input class="edit" value="' + item.description + '"> </li>');
-				// $('input[name = butAssignProd]').click();
-
-
-
-				return false;
-
-			}
-
-			//////
 		}
 
 	});
@@ -226,6 +211,15 @@
 	$(document).ready(function() {
 		countsItems(iItems);
 		hidesFooter();
+
+	$('.editing').keydown(function(e) {
+		if(e.which == 13) {
+			console.log('enter');
+			return false;
+		}
+	 });
+
+
 	});
 
 })(window);
