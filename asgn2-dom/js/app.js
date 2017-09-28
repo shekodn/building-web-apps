@@ -20,6 +20,29 @@
 		}
 	}
 
+	function removesItem(){
+		$(document).on('click','.destroy',function(){
+				var label = $(this).index();
+
+				if (label > -1) {
+					console.log('label ' + label);
+				    items.splice(label, 1);
+				}
+
+				$(this).parent().parent().remove();
+				$(this).parent().remove();
+				$(this).closest().remove();
+
+				//removes items
+				iItems -= 1;
+				countsItems(iItems);
+
+				// console.log('items has ' + items.length + ' elements');
+				// console.log(items);
+
+	  });
+	}
+
 	//Adds to list function
 	var items = [];
 	var itemsLeft = 0;
@@ -83,14 +106,47 @@
 
 		var listItems = $("#todo-list li");
 
+		// $('#todo-list li').each(function() {
+		//
+		// 	var cont = 0;
+		// 	if ($(this).closest('ul').hasClass('completed')){
+		// 		cont +=1;
+		// 		console.log(cont);
+		// 	}
+		// });
+
+
 		listItems.each(function(iN, li) {
 
-			console.log($("#todo-list li")[iN]);
+			// console.log($("#todo-list li")[iN]);
+			var cont = 0;
+			if ($(this).closest('li').hasClass('completed')){
+				//
+				cont +=1;
+				console.log(cont);
+				// var label = $(this).index();
+				//
+				// if (label > -1) {
+				// 	console.log('label ' + label);
+				//    items.splice(label, 1);
+				// }
+				//
+				// // $(this).parent().parent().remove();
+				// $(this).parent().remove();
+				// // $(this).closest().remove();
+				//
+				// //removes items
+				// iItems -= 1;
+				// countsItems(iItems);
+				console.log('completed');
+				$(this).remove();
 
 
+
+			} else{
+				console.log('not completed');
+			}
 		});
-
-
 	});
 
 
