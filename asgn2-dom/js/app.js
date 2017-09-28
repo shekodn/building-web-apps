@@ -46,6 +46,7 @@
 			//adds items
 			iItems += 1;
 			countsItems(iItems);
+			$('#addItem').val('');
 			return false;
 
 		} else {
@@ -74,6 +75,24 @@
 			console.log(items);
 
   });
+
+	$(document).on('click','.clear-completed',function(){
+
+		var completedItems = $("#todo-list .completed").length;
+
+
+		var listItems = $("#todo-list li");
+
+		listItems.each(function(iN, li) {
+
+			console.log($("#todo-list li")[iN]);
+
+
+		});
+
+
+	});
+
 
 	$(document).on('click','.toggle',function(){
 
