@@ -124,6 +124,7 @@
 				//removes items
 				iItems -= 1;
 				countsItems(iItems);
+				$(this).remove();
 				hidesFooter();
 			}
 		});
