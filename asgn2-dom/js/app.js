@@ -17,8 +17,7 @@
 	}
 
 	function itemsLeft(){
-		itemsLeft = itemsLeft - 1;
-		$('.todo-count').html(itemsLeft);
+		$('.todo-count').html(iItems);
 
 	}
 
@@ -26,6 +25,10 @@
 	//Adds to list function
 	var items = [];
 	var itemsLeft = 0;
+
+	var iItems = 0;
+	var itemsCompleted = 0;
+	var itemsNotCompleted = 0;
 
 
 			$('#addItem').keypress(function (e) {
@@ -37,12 +40,17 @@
 					var item = {isCompleted:false, description:"no desc"};
 					item.description = $('#addItem').val();
 					items.push(item);
-					$('.todo-count').html(itemsLeft);
 					$("#todo-list").append('<li><div class="view"> <input class="toggle" type="checkbox" > <label>' + item.description + '</label> <button class="destroy"> </button> </div> </li>');
 					$('input[name = butAssignProd]').click();
 					console.log('items has ' + items.length + ' elements');
 					console.log(items);
+
+					//adds items
+					iItems += 1;
+					$('.todo-count').html(iItems);
+
 					return false;
+
 				} else {
 					console.log('Cannot add item');
 				}
@@ -50,15 +58,20 @@
 
 	    $(document).on('click','.destroy',function(){
 					var label = $(this).index();
-					console.log('grand ' + $(this).parent().parent());
-					console.log('dad ' +  $(this).parent().parent());
-					$(this).parent().parent().remove();
-	        $(this).parent().remove();
 
 					if (label > -1) {
 						console.log('label ' + label);
 					    items.splice(label, 1);
 					}
+
+					$(this).parent().parent().remove();
+					$(this).parent().remove();
+					$(this).closest().remove();
+
+					//removes items
+					iItems -= 1;
+					$('.todo-count').html(iItems);
+
 					console.log('items has ' + items.length + ' elements');
 					console.log(items);
 
@@ -78,10 +91,62 @@
 				} else {
 					$(this).closest('li').addClass('completed');
 					var label = $(this).index();
-					console.log('LABEL: ' + label);
+					console.log('LABEL: ' + label + ' inner text ' + label.innerText);
 					items[label].isCompleted = true;
 					console.log('Task #' + label + ' is completed? = ' + items[label].isCompleted);
 				}
+
+				var remainingItems = iItems - $("#todo-list .completed").length;
+
+				if(remainingItems ==  1){
+
+					$('.todo-count').html(remainingItems + ' item left');
+
+				} else {
+
+					$('.todo-count').html(remainingItems + ' items left');
+
+				}
+
+
 			});
+
+			//filters
+			$(document).on('click','.filters',function(){
+
+				// console.log('Filter was clicked');
+				var filterList = document.getElementById("filters").getElementsByTagName("li");
+				var label = $(this).index('.filters');
+
+				// console.log(label);
+
+				// console.log(filterList[label].innerText);
+
+				// if(filterList[$(this).index()] == 0){
+				//
+				// 	console.log(filterList[[$(this).index()].innerText);
+				// }
+
+
+			});
+
+			$("#filters li").click(function() {
+				var index = $("#filters li").index(this);
+				// console.log("Index " + index + " was clicked");
+
+				//All
+				if(index == 0){
+					$('.todo-count').html(iItems);
+
+				} else if (index == 1) { //Active
+					$('.todo-count').html(iItems - $("#todo-list .completed").length);
+
+				} else { //completed
+					$('.todo-count').html($("#todo-list .completed").length);
+				}
+
+			});
+
+
 
 })(window);
