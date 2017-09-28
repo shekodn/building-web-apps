@@ -1,7 +1,7 @@
 (function (window) {
 	'use strict';
 
-	// Your starting point. Enjoy the ride!
+	/* FUNCTIONS */
 
 	// Create a model to represent To-do List
 	// An array of objects, with each object having two properties: "completed" (true/false)
@@ -41,6 +41,15 @@
 				// console.log(items);
 
 	  });
+	}
+
+	function hidesFooter(){
+
+		if(iItems <= 0){
+			$(".footer").hide();
+		} else{
+			$(".footer").show();
+		}
 	}
 
 	//Adds to list function
@@ -158,6 +167,7 @@
 	});
 
 
+	//Toggle - check and un check
 	$(document).on('click','.toggle',function(){
 
 
@@ -210,28 +220,11 @@
 		} else { //completed
 			$('.todo-count').html($("#todo-list .completed").length + ' items completed');
 		}
-
 	});
-
 
 	$(document).ready(function() {
-
 		countsItems(iItems);
 		hidesFooter();
-
 	});
-
-
-	function hidesFooter(){
-
-		if(iItems <= 0){
-			$(".footer").hide();
-		} else{
-			$(".footer").show();
-		}
-	}
-
-
-
 
 })(window);
