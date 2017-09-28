@@ -36,7 +36,7 @@
 				//removes items
 				iItems -= 1;
 				countsItems(iItems);
-
+				hidesFooter
 				// console.log('items has ' + items.length + ' elements');
 				// console.log(items);
 
@@ -61,7 +61,7 @@
 			var item = {isCompleted:false, description:"no desc"};
 			item.description = $('#addItem').val();
 			items.push(item);
-			$("#todo-list").append('<li><div class="view"> <input class="toggle" type="checkbox" > <label>' + item.description + '</label> <button class="destroy"> </button> </div> </li>');
+			$("#todo-list").append('<li><div class="view"> <input class="toggle" type="checkbox" > <label>' + item.description + '</label>  <button class="destroy"> </button> </div>  <input class="edit" value="' + item.description + '"> </li>');
 			$('input[name = butAssignProd]').click();
 			console.log('items has ' + items.length + ' elements');
 			console.log(items);
@@ -69,7 +69,9 @@
 			//adds items
 			iItems += 1;
 			countsItems(iItems);
+			hidesFooter();
 			$('#addItem').val('');
+
 			return false;
 
 		} else {
@@ -92,7 +94,7 @@
 			//removes items
 			iItems -= 1;
 			countsItems(iItems);
-
+			hidesFooter();
 
 			console.log('items has ' + items.length + ' elements');
 			console.log(items);
@@ -102,8 +104,7 @@
 	$(document).on('click','.clear-completed',function(){
 
 		// var completedItems = $("#todo-list .completed").length; //gives you the lenght pf all li elements
-		// var listItems = $("#todo-list li"); //has an array of the li elemtnts
-
+		var listItems = $("#todo-list li"); //has an array of the li elemtnts
 
 		listItems.each(function(iN, li) { //iterates through the li inside the ul
 
@@ -114,10 +115,46 @@
 				//removes items
 				iItems -= 1;
 				countsItems(iItems);
-				$(this).remove();
-
+				hidesFooter();
 			}
 		});
+	});
+
+
+	$(document).on('dblclick', 'li', function(){
+
+
+		if ($(this).closest('li').hasClass('editing')){
+
+			console.log('has class');
+
+			$(this).closest('li').removeClass('editing');
+
+		} else{
+
+			console.log('has no class');
+			$(this).closest('li').addClass('editing');
+
+			///////
+
+			var key = e.which;
+
+			if(key == 13) {// the enter key code
+
+				console.log('Edits item');
+				items[0].description = $('#addItem').val();
+				// $("#todo-list").append('<li><div class="view"> <input class="toggle" type="checkbox" > <label>' + item.description + '</label>  <button class="destroy"> </button> </div>  <input class="edit" value="' + item.description + '"> </li>');
+				// $('input[name = butAssignProd]').click();
+
+
+
+				return false;
+
+			}
+
+			//////
+		}
+
 	});
 
 
@@ -177,11 +214,23 @@
 	});
 
 
-	$( document ).ready(function() {
+	$(document).ready(function() {
 
 		countsItems(iItems);
+		hidesFooter();
 
 	});
+
+
+	function hidesFooter(){
+
+		if(iItems <= 0){
+			$(".footer").hide();
+		} else{
+			$(".footer").show();
+		}
+	}
+
 
 
 
