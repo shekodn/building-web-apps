@@ -1,6 +1,10 @@
 var express = require('express');
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var bodyParser = require('body-parser');
 var app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 // Use "require()" to obtain the functions from
 // p1.js and p2.js
@@ -31,6 +35,28 @@ app.get('/services/p1', function(req, res){
 
 // (2) Any POST request sent to "/services/p2"
 // will be handled by the function exported by p2.js.
+// app.post('/services/p2', function(req, res){
+//   console.console.log("post!");
+//   var person = req.query;
+//   var p = req;
+//   console.log(req);
+// });
+
+
+
+
+
+
+/**bodyParser.json(options)
+ * Parses the text as JSON and exposes the resulting object on req.body.
+ */
+
+app.post("/services/p2", function (req, res) {
+    console.log('this is a post');
+    var obj = {};
+  	console.log('body: ' + JSON.stringify(req.body));
+});
+
 
 
 

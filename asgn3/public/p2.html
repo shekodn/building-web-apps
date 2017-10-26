@@ -6,24 +6,25 @@
 </head>
 
 <body>
-    <h2>Problem #2</h2>
+  <h2>Problem #2</h2>
 
-Index: <input id=index type=number value=1><br>
-Age: <input id=age type=number value=20><br>
-Eye Color:
+  Index: <input id=index type=number value=1><br>
+  Age: <input id=age type=number value=20><br>
+  Eye Color:
   <input type=radio name=eyeColor value=blue checked> Blue
   <input type=radio name=eyeColor value=green> Green
   <input type=radio name=eyeColor value=brown> Brown
-<br>
-Name: <input id=name value="Foo Bar"><br>
+  <br>
+  Name: <input id=name value="Foo Bar"><br>
 
-<button id=submit>Update</button>
+  <button id=submit>Update</button>
 </body>
 </html>
 
 <script>
 $(document).ready(function() {
   $("#submit").on('click', function() {
+    console.log('click');
     let person = {
       index: $('#index').val() - 0,
       age: $('#age').val() - 0,
@@ -31,9 +32,20 @@ $(document).ready(function() {
       name: $('#name').val()
     };
 
-    // console.log(person);
+    $.ajax({
+      type: 'POST',
+      data: JSON.stringify(person),
+      contentType: 'application/json',
+      url: '/services/p2',
+      success: function(data) {
+        console.log('success');
+        console.log(JSON.stringify(person));
+      }
+    });
 
-    // Write code here to send the "person" object to ""/services/p2"
+    // console.log('why ' + person);
+
+
     // in a POST request via Ajax, and upon receiving the response from
     // the server, simply use console.log to show the value returned by
     // the server.
