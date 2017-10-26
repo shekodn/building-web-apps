@@ -35,35 +35,17 @@ app.get('/services/p1', function(req, res){
 
 // (2) Any POST request sent to "/services/p2"
 // will be handled by the function exported by p2.js.
-// app.post('/services/p2', function(req, res){
-//   console.console.log("post!");
-//   var person = req.query;
-//   var p = req;
-//   console.log(req);
-// });
-
-
-
-
-
-
-/**bodyParser.json(options)
- * Parses the text as JSON and exposes the resulting object on req.body.
- */
-
 app.post("/services/p2", function (req, res) {
-    console.log('this is a post');
+
     var obj = {};
-  	console.log('body: ' + JSON.stringify(req.body));
+  	// console.log('body: ' + JSON.stringify(req.body));
+    var persons = p2(req.body);
+    // res.send();
 });
-
-
 
 
 // For POST requests, you may need to use a body-parser
 // to decode its body here first.
-
-
 
 
 app.use('/', express.static('public'));

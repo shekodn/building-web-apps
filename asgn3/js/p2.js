@@ -5,6 +5,7 @@ module.exports = function(req, res) {
   // Retrieve the "person" object from the request.
   // You may assume the "person" object is valid
   // Let Q be this object
+  var Q = req;
 
   // Let P be the array of persons
 
