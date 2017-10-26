@@ -10,6 +10,10 @@ var p2 = require('./js/p2.js');
 //Contains Q (array of persons)
 var persons = p1();
 
+app.get('/services/p1', function(req, res){
+  res.send(persons); //replace with your data here
+});
+
 
 // Add routing rules in this file so that
 // (1) Any GET request sent to "/services/p1"

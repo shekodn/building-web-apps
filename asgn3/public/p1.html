@@ -16,28 +16,33 @@
 
 </ul>
 
-<script>
-function loadDoc() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("mylist").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "js/persons.js", true);
-  xhttp.send();
-}
-</script>
-
 </body>
 </html>
 
 <script>
  // Write your script here. Using jQuery is optional even though it is
  // highly recommended.
+
  $('#search').on('input',function(e){
      console.log('Changed!');
  });
+
+ $(document).ready(function() {
+   $.get('http://localhost:8081/services/p1', {}, function(data){
+        console.log(data);
+        var Q = [];
+        for(var i = 0; i < data.length; i++){
+          var myObject = data[i];
+          Q.push(myObject);
+        }
+
+        for(var i = 0; i < Q.length; i++){
+          $("#mylist").append('<li>' + '<strong> Name: </strong> ' + Q[i].name + '<strong> Age: </strong> ' + Q[i].age + '<strong> Eye color: </strong> ' + Q[i].eyeColor + '</li>');
+        }
+   });
+ });
+
+
 
 
 
