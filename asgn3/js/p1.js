@@ -27,7 +27,10 @@ module.exports = function(req, res) {
   } else{
     // Append P[i] to Q if S is a prefix of P[i].name
     for(var i = 0; i < iPersons; i++){
-      if(persons[i].name.includes(S)){
+
+      var strshortened = persons[i].name.slice(0,S.length);
+
+      if(S.toLowerCase() == strshortened.toLowerCase()){
         var myObject = persons[i];
         Q.push(myObject);
       }
