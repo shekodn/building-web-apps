@@ -27,4 +27,6 @@ module.exports = function(req, res) {
   // Note: Empty string is treated as a prefix for all strings
 
   // Send Q in the body of the response
+
+  return Q;
 }
