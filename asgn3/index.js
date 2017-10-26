@@ -8,12 +8,23 @@ var p1 = require('./js/p1.js');
 var p2 = require('./js/p2.js');
 
 //Contains Q (array of persons)
-var persons = p1();
+
+
+app.get('/index', function(req, res){
+
+  var prefix = req.query.prefix;
+  console.log(prefix);
+  var persons = p1(prefix);
+  res.send(persons); //replace with your data here
+
+
+});
 
 // Add routing rules in this file so that
 // (1) Any GET request sent to "/services/p1"
 // will be handled by the function exported by p1.js.
 app.get('/services/p1', function(req, res){
+  var persons = p1('');
   res.send(persons); //replace with your data here
 });
 

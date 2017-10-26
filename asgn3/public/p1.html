@@ -26,8 +26,22 @@
 
  $('#search').on('input',function(e){
     var text = $('#search').val();
+
+    $('#mylist').empty();
+
      console.log(text);
-     
+     $.get('/index', { prefix: text }, function(data){
+
+       var Q = [];
+       for(var i = 0; i < data.length; i++){
+         var myObject = data[i];
+         Q.push(myObject);
+       }
+
+       for(var i = 0; i < Q.length; i++){
+         $("#mylist").append('<li>' + '<strong> Name: </strong> ' + Q[i].name + '<strong> Age: </strong> ' + Q[i].age + '<strong> Eye color: </strong> ' + Q[i].eyeColor + '</li>');
+       }
+     });
 
  });
 
