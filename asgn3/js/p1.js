@@ -39,8 +39,6 @@ module.exports = function(req, res) {
 
   // Let P be the array of persons
 
-
-
   console.log('Q now Contains: ' + Q.length);
 
 

@@ -13,7 +13,6 @@ var p2 = require('./js/p2.js');
 
 //Contains Q (array of persons)
 
-
 app.get('/index', function(req, res){
 
   var prefix = req.query.prefix;
