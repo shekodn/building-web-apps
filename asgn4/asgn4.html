@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignment #4</title>
+</head>
+<body>
+
+<h1>Assignment #4</h1>
+<p>
+In this assignment, you objective is to modify "js/asgn4.js"
+to perform the actions specified in TODO 1-5.
+</p>
+
+For the actions here to work, both the mongodb and node servers need to be
+running.
+
+<hr>
+Example: Get a user whose username is 'john' (without the password field)<br>
+<a href="/asgn4/getuser/john">Action</a><br>
+
+This has already implemented. The response contains a user object
+with objectId, username and email of the specified user in JSON format.
+
+<hr>
+
+TODO 1: Get all users<br>
+<a href="/asgn4/p1">Action</a> <br>
+
+The response should contain all user objects (as an array) in JSON format.
+<hr>
+
+TODO 2: Add a user <br>
+<form action="/asgn4/p2" method="GET">
+Username: <input name="username"><br>
+Email: <input name="email"><br>
+Password: <input name="password"><br>
+<input type="submit">
+</form>
+<br>
+
+If successful, the response should contain the newly created object
+(with objectId, username, email) in JSON format.
+<hr>
+
+TODO 3: Get all items containing the following tag (ONE tag only)
+<form action=/asgn4/p3" method="GET">
+<input name="tag">
+<input type="submit">
+</form>
+<p>
+The response should contain all item objects satisfying the condition.<br>
+If the input field is empty (no specified tag), all items should be returned.<br>
+Leading and trailing whitespace characters in the input field should be removed.
+</p>
+<p>
+<b>Bonus (extra 1 point):</b> Your implementation allows a user to specify multiple tags and
+  the server-side script can find items containing all the specified tags</b>.
+</p>
+
+<hr>
+
+TODO 4: Delete all items owned by the specified user:
+<form action="/asgn4/p4" method="GET">
+<input name="username">
+<input type="submit">
+</form>
+<p>
+If successful, the response should contain all the deleted item objects
+in JSON format.
+</p>
+<hr>
+
+TODO 5: Add a tag named "asgn4" to all items owned by the specified user:
+<form action="/asgn4/p5" method="GET">
+<input name="username">
+<input type="submit">
+</form>
+<p>
+If successful, the response should contain all the updated item objects
+in JSON format.
+</p>
+
+</body>
+</html>
