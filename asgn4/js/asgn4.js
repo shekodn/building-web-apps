@@ -114,7 +114,7 @@ router.get('/getuser/:username', function(req, res) {
       } else {
         if(users.length > 0){
           id = users[0].id;
-          
+
           // model.Item.find({"owner" : id}, function(err, items){
           //   if(err) {
           //     res.send('error');
@@ -142,5 +142,32 @@ router.get('/getuser/:username', function(req, res) {
 
   // For TODO 5
   router.get('/p5', function(req, res) {
-    res.send("Not yet implemented.");  // Place holder
+
+    var query_name = req.query.username.trim(); //owner
+    var id;
+
+    //gets the ID of the user
+    model.User.find({"username" : { $in : [query_name]  } }, function(err, users){
+      if(err){
+        res.send('error');
+      } else {
+        if(users.length > 0){
+          id = users[0].id;
+
+          model.Item.find({"owner" : id}, function(err, items){
+            if(err) {
+              res.send('error');
+            } else {
+              // res.send();
+              res.write(query_name + " has " + items.length + " items" + items);
+              res.end()
+            }
+          });
+
+        } else{
+          res.send("User not found");
+        }
+      }
+    });
+
   });
