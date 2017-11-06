@@ -114,12 +114,23 @@ router.get('/getuser/:username', function(req, res) {
       } else {
         if(users.length > 0){
           id = users[0].id;
+          
+          // model.Item.find({"owner" : id}, function(err, items){
+          //   if(err) {
+          //     res.send('error');
+          //   } else {
+          //     // res.send();
+          //     res.write("Deleted items: " + items.length + "</br>");
+          //   }
+          // });
+
           model.Item.remove({"owner" : id}, function(err, items){
             if(err) {
               res.send('error');
             } else {
               // res.send();
-              res.send(query_name + " has " + items.length + " items </br> " + items);
+              res.write(query_name + " has " + items.length + " items </br> " + items);
+              res.end()
             }
           });
         } else{
