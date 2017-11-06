@@ -51,7 +51,18 @@ router.get('/getuser/:username', function(req, res) {
 
   // For TODO 2
   router.get('/p2', function(req, res) {
-    res.send("Not yet implemented.");  // Place holder
+
+    var person = {username: req.query.username, email: req.query.email, password: req.query.password};
+
+    model.User.create({username: person.username, email: person.email, password: person.password}, function (err, doc) {
+
+      if (err){
+        res.send('Error');
+      } else{
+        res.send(person);
+      }
+    });
+
   });
 
   // For TODO 3
