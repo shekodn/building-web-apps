@@ -111,15 +111,13 @@ router.get('/getuser/:username', function(req, res) {
     model.User.find({"username" : { $in : [query_name]  } }, function(err, users){
       if(err){
         res.send('error');
-      } else{
-
+      } else {
         if(users.length > 0){
           id = users[0].id;
-          console.log(users);
-          model.Item.find({"owner" : id}, function(err, items){
-            if(err){
+          model.Item.remove({"owner" : id}, function(err, items){
+            if(err) {
               res.send('error');
-            } else{
+            } else {
               // res.send();
               res.send(query_name + " has " + items.length + " items </br> " + items);
             }
