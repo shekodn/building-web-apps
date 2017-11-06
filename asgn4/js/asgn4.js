@@ -67,7 +67,28 @@ router.get('/getuser/:username', function(req, res) {
 
   // For TODO 3
   router.get('/p3', function(req, res) {
-    res.send("Not yet implemented.");  // Place holder
+
+    var query = req.query.tag
+
+    console.log(query);
+
+    model.Item.find({"tags" : { $in : [query]  } } , function(err, items){
+
+      if(err){
+        res.send('Error');
+        next();
+      } else {
+        // Return them in JSON format
+        if(items.length > 0){
+          res.send("Items found with <strong>" + query + " </strong> tag <br> <br>" + items);
+
+        } else{
+          res.send("Sorry, no items found with <strong>" + query + " </strong> tag");
+
+        }
+        console.log(items.length);
+      }
+    });
   });
 
   // For TODO 4
