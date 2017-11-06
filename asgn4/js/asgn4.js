@@ -68,7 +68,7 @@ router.get('/getuser/:username', function(req, res) {
   // For TODO 3
   router.get('/p3', function(req, res) {
 
-    var query = req.query.tag
+    var query = req.query.tag.trim();
 
     console.log(query);
 
