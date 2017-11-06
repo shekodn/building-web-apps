@@ -72,23 +72,32 @@ router.get('/getuser/:username', function(req, res) {
 
     console.log(query);
 
-    model.Item.find({"tags" : { $in : [query]  } } , function(err, items){
-
-      if(err){
-        res.send('Error');
-        next();
-      } else {
-        // Return them in JSON format
-        if(items.length > 0){
-          res.send("Items found with <strong>" + query + " </strong> tag <br> <br>" + items);
-
-        } else{
-          res.send("Sorry, no items found with <strong>" + query + " </strong> tag");
-
+    //If query is empty, return all items
+    if (query == ''){
+      model.Item.find({} , function(err, items){
+        if(err){
+          res.send('Error');
+          next();
+        } else {
+          // Return all items
+          res.send(items.length + " items <br>" + items);
         }
-        console.log(items.length);
-      }
-    });
+      });
+    } else {
+      model.Item.find({"tags" : { $in : [query]  } } , function(err, items){
+        if(err){
+          res.send('Error');
+          next();
+        } else {
+          // Return them in JSON format
+          if(items.length > 0){
+            res.send(items.length + " Items found with <strong>" + query + " </strong> tag <br> <br>" + items);
+          } else{
+            res.send("Sorry, no items found with <strong>" + query + " </strong> tag");
+          }
+        }
+      });
+    }
   });
 
   // For TODO 4
