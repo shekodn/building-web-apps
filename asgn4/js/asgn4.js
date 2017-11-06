@@ -22,48 +22,50 @@ router.get('/getuser/:username', function(req, res) {
         console.log(err);
         res.sendStatus(500);
       }
-
       res.json(user);
-    }
-  );
+    });
+  });
 
-});
+  // TODO: Add your code here
 
-// TODO: Add your code here
+  // For TODO 1
+  router.get('/p1', function(req, res) {
 
-// For TODO 1
-router.get('/p1', function(req, res) {
-  // retrieve all users from DB
+    // retrieve all users from DB
+    model.User.find({}, function(err, users){
 
-  // Return them in JSON format
-  res.send("Not yet implemented.");  // Place holder
-});
+      if(err){
+        res.send('Error');
+        next();
 
-// For TODO 1
-router.get('/p1', function(req, res) {
-  // retrieve all users from DB
+      } else {
 
-  // Return them in JSON format
-  res.send("Not yet implemented.");  // Place holder
-});
+        // Return them in JSON format
+        res.send(users);
+      }
+    });
 
-// For TODO 2
-router.get('/p2', function(req, res) {
-  res.send("Not yet implemented.");  // Place holder
-});
 
-// For TODO 3
-router.get('/p3', function(req, res) {
-  res.send("Not yet implemented.");  // Place holder
-});
 
-// For TODO 4
-router.get('/p4', function(req, res) {
+  });
 
-  res.send("Not yet implemented.");  // Place holder
-});
+  // For TODO 2
+  router.get('/p2', function(req, res) {
+    res.send("Not yet implemented.");  // Place holder
+  });
 
-// For TODO 5
-router.get('/p5', function(req, res) {
-  res.send("Not yet implemented.");  // Place holder
-});
+  // For TODO 3
+  router.get('/p3', function(req, res) {
+    res.send("Not yet implemented.");  // Place holder
+  });
+
+  // For TODO 4
+  router.get('/p4', function(req, res) {
+
+    res.send("Not yet implemented.");  // Place holder
+  });
+
+  // For TODO 5
+  router.get('/p5', function(req, res) {
+    res.send("Not yet implemented.");  // Place holder
+  });
