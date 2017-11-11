@@ -61,7 +61,8 @@ router.get('/getuser/:username', function(req, res) {
       } else{
         console.log(doc);
         // res.write(person.toString());
-        res.write("id: " + doc.id + " username: " + person.username + " email: " + person.email);
+        res.write("{_id:\":\"" + doc.id + ",\"username:\"" + person.username + ",\"email:\"" + person.email + "\"}");
+        //{"_id":"5a06c9b2f2f57e62d10e24ea","username":"john","email":"john@example.com"}
         res.end();
       }
     });

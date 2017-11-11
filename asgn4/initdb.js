@@ -72,8 +72,8 @@ function populateData() {
     // Replace the owner indexes by their _ids
     for (var i = 0; i < items.length; i++) {
       var ownerIdx = items[i].owner;
-      // items[i].owner = _users[ownerIdx]._id;
-      items[i].owner = _users[0]._id;
+      items[i].owner = _users[ownerIdx]._id;
+      // items[i].owner = _users[0]._id;
     }
 
     // Insert all items
