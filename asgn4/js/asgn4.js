@@ -55,14 +55,16 @@ router.get('/getuser/:username', function(req, res) {
     var person = {username: req.query.username, email: req.query.email, password: req.query.password};
 
     model.User.create({username: person.username, email: person.email, password: person.password}, function (err, doc) {
-
       if (err){
+        // res.send(err);
         res.send('Error');
       } else{
-        res.send(person);
+        console.log(doc);
+        // res.write(person.toString());
+        res.write("id: " + doc.id + " username: " + person.username + " email: " + person.email);
+        res.end();
       }
     });
-
   });
 
   // For TODO 3
