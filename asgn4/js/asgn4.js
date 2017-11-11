@@ -104,7 +104,6 @@ router.get('/getuser/:username', function(req, res) {
   router.get('/p4', function(req, res) {
 
     var query_name = req.query.username.trim(); //owner
-    var hasOwner = false;
     var id;
 
     //gets the ID of the user
@@ -140,10 +139,35 @@ router.get('/getuser/:username', function(req, res) {
   });
 
   // For TODO 5
+  // Add a tag named "asgn4" to all items owned by the specified user:
   router.get('/p5', function(req, res) {
 
     var query_name = req.query.username.trim(); //owner
     var id;
+
+
+    model.User.find({"username" : { $in : [query_name]  } }, function(err, users){
+      if(err){
+        res.send('error');
+      } else {
+        if(users.length > 0){
+          id = users[0].id;
+
+          model.Item.updateMany({"owner" : id}, { $push: { tags: 'assg4' } }, function(err, items){
+
+            if(err) {
+              res.send('error');
+            } else {
+              console.log(items);
+              res.end();
+            }
+          });
+        } else{
+          res.send("User not found");
+        }
+      }
+    });
+
 
     //gets the ID of the user
     // model.Tags.update({id: partyId}, { $push: { tracks: [trackId] } }, function(err, users){
