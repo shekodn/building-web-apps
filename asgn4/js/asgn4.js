@@ -145,7 +145,7 @@ router.get('/getuser/:username', function(req, res) {
     var query_name = req.query.username.trim(); //owner
     var id;
 
-
+    //gets username id
     model.User.find({"username" : { $in : [query_name]  } }, function(err, users){
       if(err){
         res.send('error');
@@ -153,13 +153,24 @@ router.get('/getuser/:username', function(req, res) {
         if(users.length > 0){
           id = users[0].id;
 
-          model.Item.updateMany({"owner" : id}, { $push: { tags: 'assg4' } }, function(err, items){
-
+          // uses the retrieved id to add asgn4 into tags attribute in Item model
+          model.Item.updateMany({"owner" : id}, { $push: { tags: 'asgn4' } }, function(err, result){
             if(err) {
               res.send('error');
             } else {
-              console.log(items);
-              res.end();
+
+              res.write(result.nModified + ' items were modified');
+              // Finds all items
+              // the response should contain all the updated item objects
+              model.Item.find({"owner" : id}, function(err, items){
+                if(err) {
+                  res.send('error');
+                } else {
+                  console.log(items);
+                  res.write(items.toString());
+                  res.end();
+                }
+              });
             }
           });
         } else{
@@ -167,32 +178,4 @@ router.get('/getuser/:username', function(req, res) {
         }
       }
     });
-
-
-    //gets the ID of the user
-    // model.Tags.update({id: partyId}, { $push: { tracks: [trackId] } }, function(err, users){
-    //   if(err){
-    //     res.send('error');
-    //   } else {
-    //     if(users.length > 0){
-    //       id = users[0].id;
-    //
-    //       model.Item.find({"owner" : id}, function(err, items){
-    //         if(err) {
-    //           res.send('error');
-    //         } else {
-    //           // res.send();
-    //           // res.write(query_name + " has " + items.length + " items" + items);
-    //           res.end();
-    //         }
-    //       });
-    //
-    //     } else{
-    //       res.send("User not found");
-    //     }
-    //   }
-    // });
-
-
-
   });
