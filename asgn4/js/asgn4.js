@@ -115,22 +115,21 @@ router.get('/getuser/:username', function(req, res) {
         if(users.length > 0){
           id = users[0].id;
 
-          // model.Item.find({"owner" : id}, function(err, items){
-          //   if(err) {
-          //     res.send('error');
-          //   } else {
-          //     // res.send();
-          //     res.write("Deleted items: " + items.length + "</br>");
-          //   }
-          // });
-
-          model.Item.remove({"owner" : id}, function(err, items){
+          model.Item.find({"owner" : id}, function(err, items){
             if(err) {
               res.send('error');
             } else {
-              // res.send();
-              res.write(query_name + " has " + items.length + " items </br> " + items);
-              res.end()
+
+              res.write(items.length  + " items were deleted " + items);
+
+              model.Item.remove({"owner" : id}, function(err, items){
+
+               if(err) {
+                 res.send('error');
+               } else {
+                 res.end();
+               }
+             });
             }
           });
         } else{
@@ -147,27 +146,29 @@ router.get('/getuser/:username', function(req, res) {
     var id;
 
     //gets the ID of the user
-    model.User.find({"username" : { $in : [query_name]  } }, function(err, users){
-      if(err){
-        res.send('error');
-      } else {
-        if(users.length > 0){
-          id = users[0].id;
+    // model.Tags.update({id: partyId}, { $push: { tracks: [trackId] } }, function(err, users){
+    //   if(err){
+    //     res.send('error');
+    //   } else {
+    //     if(users.length > 0){
+    //       id = users[0].id;
+    //
+    //       model.Item.find({"owner" : id}, function(err, items){
+    //         if(err) {
+    //           res.send('error');
+    //         } else {
+    //           // res.send();
+    //           // res.write(query_name + " has " + items.length + " items" + items);
+    //           res.end();
+    //         }
+    //       });
+    //
+    //     } else{
+    //       res.send("User not found");
+    //     }
+    //   }
+    // });
 
-          model.Item.find({"owner" : id}, function(err, items){
-            if(err) {
-              res.send('error');
-            } else {
-              // res.send();
-              res.write(query_name + " has " + items.length + " items" + items);
-              res.end()
-            }
-          });
 
-        } else{
-          res.send("User not found");
-        }
-      }
-    });
 
   });
