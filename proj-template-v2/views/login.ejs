@@ -12,18 +12,31 @@
 %>
 
 <%- include header.ejs %>
+  <h2 class="page-header">Account Login</h2>
 
-  <div id=content>
-    <form action="/login" method=post>
-      Username: <input name=uname value="<%= username %>"><br>
-      Password: <input type=password name=pword><br>
-      <input  type=submit><br>
-    </form>
-    <hr>
-    <% if (loginMsg) { %>
-      <span style="color:red"><%= loginMsg %></span>
-    <% } %>
+  <div class="center-block">
+    <div class="row" id=content>
+      <div class="col-sm-6 col-sm-offset-3">
 
+        <% if (loginMsg) { %>
+          <div class="alert alert-danger" role="alert">
+            <strong>Oh snap!</strong> <%= loginMsg %>
+          </div>
+        <% } %>
+
+        <form action="/login" method=post>
+          <label>Username</label>
+          <input type="text" class="form-control" name="uname" placeholder="Username" value="<%= username %>"><br>
+
+          <label>Password</label>
+          <input type="password" class="form-control" name="pword" placeholder="Password" value="<%= username %>"><br>
+
+          <div class="center-block">
+            <button type="submit" class="btn btn-default">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 
 <%- include footer.ejs %>

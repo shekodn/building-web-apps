@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 var dbDomain = "localhost";
-var dbName = "csci2720";
+var dbName = "finalProject";
 var dbUri = "mongodb://" + dbDomain + "/" + dbName;
 
 mongoose.connect(dbUri);
