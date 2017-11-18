@@ -19,3 +19,5 @@ app.set('view engine', 'ejs'); // set up ejs for templating
 app.use(require('./public/js/routes.js'));
 
 app.listen(8081);
+
+app.use(express.static(__dirname + '/public'));
