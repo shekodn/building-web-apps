@@ -2,9 +2,9 @@
 
 var mongoose = require('mongoose');
 
-require('./js/db.js'); // Set up connection and create DB if it does not exists yet
+require('./public/js/db.js'); // Set up connection and create DB if it does not exists yet
 
-var model = require('./js/model.js');
+var model = require('./public/js/model.js');
 
 // Remove existing data from Users and Items collections and
 // repopulate them with test data
