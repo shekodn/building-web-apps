@@ -1,0 +1,14 @@
+/* You should not need to study the CSS code in this file for problem 2 */
+body { padding: 5px; }
+
+#output ul {
+  list-style: none;
+  padding: 0;
+}
+
+#output ul li {
+  list-style: none;
+  border: 1px solid blue;
+  width: 200px;
+  padding: 2px 5px;
+}

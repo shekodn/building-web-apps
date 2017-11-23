@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSCI2720 Lab Test P3 (Ajax)</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+Enter a sequence of integers separated by space:<br>
+<input id=input type=text size=80><br>
+<button id=process>Process</button><br>
+<hr>
+<div id=output>
+</div>
+
+</body>
+</html>
+
+<script>
+
+// This function converts a string containing space-separated integers
+// to an array of integers. 
+function toIntArray(str) {
+  if (typeof str != 'string') {
+    console.error('str should be a string containing space-separated integers');
+    return [];
+  }
+
+  let A = str.trim().split(/\s+/);
+  for (let i = 0; i < A.length; i++)
+    A[i] = A[i]-0; 
+
+  return A;
+}
+
+</script>

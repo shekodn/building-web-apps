@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head><title>Login</title>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js">
+</script>
+
+</head>
+<body>
+
+<h3>Login</h3>
+  <form method=post>
+  Username: <input name=uname value=john> (john)<br>
+  Password: <input type=password name=pword value=123> (123)<br>
+  <input  type=submit><br>
+  </form>
+<hr>
+
+<h3>Check Login via Ajax</h3>
+When a user clicks the following button, an Ajax request
+should be sent to the server to get the amount of time (in milliseconds)
+elapsed after since user logged in to the app. 
+<br>
+<button id=checklogin>Check Login Status</button><br>
+Elapsed time in milliseconds: <output id="output"></output>
+<hr>
+
+<h3>Restricted resource</h3>
+<p>The following links are only accessible to users who have logged in.</p>
+
+<a href="/restricted/bear.jpg">Bear Image</a><br>
+<a href="/restricted/cat.jpg">Cat Image</a><br>
+<a href="/restricted/dog.jpg">Dog Image</a><br>
+<a href="/restricted/owl.jpg">Owl Image</a><br> 
+
+</body>
+</html>
+
+<script>
+$(document).ready(()=>{
+
+  // Exercise #1:
+  // Write some code here so that when the "#checklogin" button is clicked,
+  // your code would send an Ajax request to the server to find out 
+  // how many seconds have passed since the user logged in.
+
+  $('#checklogin').on('click', () => {
+    $.ajax({
+       url: '/getLoginElapsedTime',
+       success: (result) => {
+         $('#output').text(result);
+       },
+       error: () => {
+         $('#output').text('Error (Need to implement the server-side code)');
+       }
+    });
+  });
+
+});
+
+</script>
+
