@@ -23,7 +23,7 @@
   In your solution, you should use JavaScript to generate this list dynamically.
  -->
 <div id=output>
-<ul>
+<ul id="output-ul">
   <li class=type1>1234</li>
   <li class=type2>4567</li>
   <li class=type3>-50</li>
@@ -34,3 +34,49 @@
 
 </body>
 </html>
+
+<script>
+  // Initially, the list is empty.
+  $("ul").empty();
+
+  // When the “Push” button is clicked, append NUM to the end of the list
+  // if the list does not yet contain a value that is equal to NUM.
+
+  $( "#push" ).click(function() {
+    var NUM = $( "#num" ).val();
+
+    var lis = [];
+
+    $("ul li").each(function() { lis.push($(this).text()) });
+
+    if(lis.includes(NUM)){
+      console.log(NUM + " is already inside list");
+    } else{
+      $("ul").append('<li>' + NUM + '</li>');
+      console.log(NUM + " was pushed");
+    }
+
+  });
+
+  // When the “Pop” button is clicked, if there exists a value in the list that
+  //is equal to NUM, remove the value from the list.
+
+  $( "#pop" ).click(function() {
+    console.log("POP")
+    var NUM = $( "#num" ).val();
+
+    $("ul li").each(function() {
+      var text = $(this).text();
+      if(text == NUM){
+        $( this ).remove()
+      }
+    });
+
+  });
+
+
+
+
+
+
+</script>
