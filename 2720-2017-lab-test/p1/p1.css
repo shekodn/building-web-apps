@@ -15,6 +15,15 @@
     font-weight: bold;
   }
 
+  ol::first-line{
+     font-weight: bold;
+  }
+
+  ol li:last-child {
+    font-weight: bold;
+  }
+
+
   #container img {
     /*display: block;*/
     max-width:200px;
