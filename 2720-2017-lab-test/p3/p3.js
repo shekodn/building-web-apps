@@ -15,16 +15,11 @@ function customCompare(a, b) {
 // This function must be called on the server side to
 // sort the integers in A[] into a specific order.
 function customSort(A) {
-  if (undefined === window)
-    A.sort(customCompare); 
+    A.sort(customCompare);
 }
 
 // Insert a routing rule here to handle the Ajax request
-// and return the sorted result 
-
-
-
-
+// and return the sorted result
 
 
 
@@ -33,6 +28,20 @@ app.get('/', function(req, res) {
 })
 
 app.get('/p3.html', function(req, res) {
+
+  console.log(req.query.auxInput)
+
+  array = req.query.auxInput
+
+
+  console.log(array);
+
+  //Pass this array to INT***********
+
+  //Sort the array***********
+
+  //SEND THE ARRAY BACK ***********
+
   res.sendFile(__dirname + '/p3.html');
 })
 

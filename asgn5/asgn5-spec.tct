@@ -1,0 +1,34 @@
+CSCI2720 Assignment #5 
+Due: 8 Dec 2017
+
+Objective
+---------
+To send Ajax request (with cookies) to different origins.
+
+Todo
+----
+Modify "index.html" (which contains client-side Ajax code) and
+"index2.js" (which contains server-side code of a server at a different
+origin, http://localhost:8083) accordingly so that when a user
+clicks the second button, the JS code in "index.html" can successfully
+send an Ajax GET request (with cookies) to http://localhost:8083/simpleget,
+and output the response's body in the JS Console.
+
+If your solution works, the console output yielded by clicking the
+first and second buttons should be the same.
+
+You may find the following resources useful:
+  Cross Domain Ajax Request with Cookies(CORS)
+  http://promincproductions.com/blog/cross-domain-ajax-request-cookies-cors/
+
+  MDN Web Docs -- Cross-Origin Resource Sharing (CORS)
+  https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+
+What to submit
+--------------
+Archive your Node.js application folder into a ZIP or ARJ file, and upload
+the archived file to Blackboard.
+
+Please remove the /node_modules folder from your application folder before
+archiving your files.
+

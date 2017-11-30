@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Asgn 5 CORS (Simple Ajax Request + cookies)</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<p>
+  Please refer to the error  message or output in the JS console.
+</p>
+<button id="b1">Simple Ajax GET to http://localhost:8081</button><br>
+<button id="b2">Simple Ajax GET to http://localhost:8083</button>
+</body>
+</html>
+
+<script>
+
+function successCB(data, textStatus, jqXHR) {
+  console.log("Success", data);
+}
+
+function errorCB(jqXHR, textStatus, err) {
+  console.error("Error", err);
+}
+
+$(document).ready(function() {
+  $('#b1').on('click', function() {
+      $.ajax({
+          method: 'get',
+          url: 'http://localhost:8081/simpleget',
+          success: successCB,
+          error: errorCB
+      });
+  });
+
+  // TODO: You should only need to make a small modification to
+  // the parameters to send cookies in a CORS request
+  $('#b2').on('click', function() {
+      $.ajax({
+          method: 'get',
+          url: 'http://localhost:8083/simpleget',
+          success: successCB,
+          error: errorCB
+      });
+  });
+});
+
+</script>

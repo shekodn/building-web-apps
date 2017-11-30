@@ -25,4 +25,3 @@ module.exports = {
   User: User,
   Item: Item
 }
-

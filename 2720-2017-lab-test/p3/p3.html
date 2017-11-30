@@ -17,9 +17,30 @@ Enter a sequence of integers separated by space:<br>
 </html>
 
 <script>
+$( "#process" ).click(function() {
+  var input = $("#input").val();
+  var auxInput = toIntArray(input);
+
+  $.ajax({
+      url: "/p3.html",
+      type: "GET",
+      data: {auxInput},
+      dataType: "text",
+          success: function(response, status, http) {
+              if (response) {
+                console.log('input ' + input);
+                console.log('aux ' + auxInput);
+              }
+          }
+      });
+
+});
+
+
+
 
 // This function converts a string containing space-separated integers
-// to an array of integers. 
+// to an array of integers.
 function toIntArray(str) {
   if (typeof str != 'string') {
     console.error('str should be a string containing space-separated integers');
@@ -28,7 +49,7 @@ function toIntArray(str) {
 
   let A = str.trim().split(/\s+/);
   for (let i = 0; i < A.length; i++)
-    A[i] = A[i]-0; 
+    A[i] = A[i]-0;
 
   return A;
 }
